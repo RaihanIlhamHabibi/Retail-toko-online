@@ -29,7 +29,7 @@
 API-first e-commerce platform! You can install it within 5 minutes
 and can adapt, extend, overwrite and customize anything to your needs.
 
-[![Aimeos Laravel demo](https://aimeos.org/fileadmin/aimeos.org/images/aimeos-github.png)](https://laravel.demo.aimeos.org)
+
 
 ## Features
 
@@ -107,12 +107,7 @@ Supported languages:
 </p>
 
 
-Check out the demos:
 
-* [Aimeos frontend demo](https://laravel.demo.aimeos.org)
-* [Aimeos admin demo](https://admin.demo.aimeos.org)
-
-## Headless distribution
 
 To build a single page application (SPA) respectively a progressive web
 application (PWA), the Aimeos headless distribution is the right choice
