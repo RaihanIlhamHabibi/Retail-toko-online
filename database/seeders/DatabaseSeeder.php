@@ -14,6 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(AbangkuhStoreSeeder::class);
+        $this->call([
+            AbangkuhStoreSeeder::class,
+            CommerceDemoSeeder::class,
+        ]);
     }
 }
