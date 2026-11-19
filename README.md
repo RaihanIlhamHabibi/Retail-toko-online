@@ -10,7 +10,7 @@ Abangkuh adalah aplikasi toko online yang dibangun dengan Laravel dan Aimeos. Ap
 - Halaman CMS tentang, kontak, pengiriman, privasi, dan syarat ketentuan.
 - Integrasi provider Midtrans tersedia, tetapi pembayaran tetap nonaktif sampai kredensial sandbox dan harga produk IDR disiapkan.
 - API order/inventory untuk tes engineering, dengan JWT, reservasi stok transaksional, role admin, dan audit log.
-- Frontend latihan Next.js 14 di `storefront/`, terpisah dari storefront Aimeos yang sudah ada.
+- Frontend latihan Next.js 15.5.29 di `storefront/`, terpisah dari storefront Aimeos yang sudah ada.
 
 Abangkuh menggunakan Aimeos sebagai mesin e-commerce. Data produk, pesanan, akun, dan media yang ada di instalasi lokal tidak disertakan dalam repository ini.
 

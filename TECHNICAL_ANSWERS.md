@@ -40,7 +40,7 @@ Untuk chatbot, risiko prompt injection yang perlu diwaspadai adalah teks penggun
 
 ## 2. Coding challenge — implementasi di Abangkuh
 
-API challenge berada di Laravel, berdampingan dengan toko Aimeos yang sudah ada. Frontend latihan Next.js 14 berada di `storefront/`. Katalog API challenge memakai tabel `products`; pesanan API challenge memakai tabel `orders`/`order_items`, terpisah dari tabel internal Aimeos. Saya menggunakan MySQL pada konfigurasi lokal/Compose; pilihan ini memenuhi opsi stack yang memperbolehkan teknologi lain.
+API challenge berada di Laravel, berdampingan dengan toko Aimeos yang sudah ada. Frontend latihan Next.js 15.5.29 berada di `storefront/`. Katalog API challenge memakai tabel `products`; pesanan API challenge memakai tabel `orders`/`order_items`, terpisah dari tabel internal Aimeos. Saya menggunakan MySQL pada konfigurasi lokal/Compose; pilihan ini memenuhi opsi stack yang memperbolehkan teknologi lain.
 
 ### 2.1 Data model
 
@@ -89,9 +89,9 @@ Transisi yang diizinkan divalidasi di `InventoryService`: `pending` dapat menuju
 
 API menggunakan JWT dengan role `user`/`admin`, pembatasan order berdasarkan pemilik, validasi request Laravel, dan rate limit login lima request per menit per pasangan email+IP. Endpoint restock, laporan, dan perubahan status hanya untuk admin. Stok dibaca dan diubah dalam transaksi dengan row lock untuk mengurangi risiko overselling.
 
-### 2.6 Frontend Next.js 14
+### 2.6 Frontend Next.js 15.5.29
 
-Frontend latihan memakai Next.js 14, TypeScript, Tailwind CSS, dan React Context untuk auth/cart. Halaman yang tersedia: product list (`/`), product detail (`/products/{id}`), cart (`/cart`), order history (`/orders`), dan order detail (`/orders/{id}`). Layout responsif, dengan loading state dan error boundary. Token disimpan di memori; refresh halaman mengharuskan login kembali.
+Frontend latihan memakai Next.js 15.5.29, TypeScript, Tailwind CSS, dan React Context untuk auth/cart. Halaman yang tersedia: product list (`/`), product detail (`/products/{id}`), cart (`/cart`), order history (`/orders`), dan order detail (`/orders/{id}`). Layout responsif, dengan loading state dan error boundary. Token disimpan di memori; refresh halaman mengharuskan login kembali.
 
 ### 2.7 Deployment
 
