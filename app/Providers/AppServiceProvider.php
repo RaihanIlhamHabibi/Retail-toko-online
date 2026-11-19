@@ -33,6 +33,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->ensureSqliteDatabaseExists();
+
         Password::defaults(function () {
             $rule = Password::min( 8 );
             return $this->app->isProduction() ? $rule->mixedCase()->uncompromised() : $rule;
@@ -98,5 +100,43 @@ class AppServiceProvider extends ServiceProvider
         \Aimeos\Shop\Controller\ResolveController::register( 'cms', function( $context, $path ) {
             return $this->cms( $context, $path );
         });
+    }
+
+    private function ensureSqliteDatabaseExists(): void
+    {
+        $connection = config('database.default');
+
+        if (config("database.connections.{$connection}.driver") !== 'sqlite') {
+            return;
+        }
+
+        $database = config("database.connections.{$connection}.database");
+
+        if (! is_string($database) || $database === ':memory:' || str_starts_with($database, 'file:')) {
+            return;
+        }
+
+        $path = realpath($database);
+
+        if ($path === false) {
+            $isAbsolute = str_starts_with($database, DIRECTORY_SEPARATOR)
+                || (DIRECTORY_SEPARATOR === '\\' && preg_match('/^[A-Za-z]:[\\\\\/]/', $database) === 1);
+            $path = $isAbsolute ? $database : base_path($database);
+        }
+
+        if (is_file($path)) {
+            return;
+        }
+
+        $handle = @fopen($path, 'x+b');
+
+        if ($handle !== false) {
+            fclose($handle);
+            return;
+        }
+
+        if (! is_file($path)) {
+            throw new \RuntimeException("Unable to create SQLite database file at [{$path}].");
+        }
     }
 }
